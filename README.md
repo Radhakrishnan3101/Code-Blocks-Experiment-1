@@ -29,45 +29,75 @@ Add: netproto and pthread
 
 #include <stdio.h>
 
-#define window_size 4  // Assume 7 frames of data are to be sent using Go-Back-N ARQ
+
+#define window_size 4 // Assume 7 frames of data are to be sent using Go-Back-N ARQ
 
 void main() {
 
-    int i, window_start = 1, ack;
+
+int i, window_start = 1, ack;
+
+
+int n;
+
+
+printf("SLIDING WINDOW PROTOCOL\n");
+
+scanf("%d", &n);
+
+printf("GO BACK N ARQ\n");
+
+printf("Enter the number of frames: %d\n", n);
+
+char frame[n + 1][10];
+
+for (i = 1; i <= n; i++) {
+
+printf("Content for frame %d: ", i);
     
-    int n;
+scanf("%s", frame[i]);
 
-    printf("SLIDING WINDOW PROTOCOL\n");
-    scanf("%d", &n);
-    printf("GO BACK N ARQ\n");
-    printf("Enter the number of frames: %d\n", n);
-
-    char frame[n + 1][10];
-
-    for (i = 1; i <= n; i++) {
-        printf("Content for frame %d: ", i);
-        scanf("%s", frame[i]);
-    }
-
-    while (window_start <= n) {
-        printf("\nSending frames:\n");
-        scanf("%d", &ack);
-        printf("Enter frame number with no ACKs: %d\n", ack);
-
-        if (ack == 0) {
-            printf("No ACK received, moving window forward\n");
-            window_start += window_size;
-        } else {
-            printf("No Acknowledgement for frame %d...\n", ack);
-            printf("Resending frames starting from frame %d\n", ack);
-            window_start = ack;
-        }
-    }
-
-    printf("\nAll frames sent successfully.\n");
 }
+
+while (window_start <= n) {
+
+printf("\nSending frames:\n");
+
+scanf("%d", &ack);
+
+printf("Enter frame number with no ACKs: %d\n", ack);
+
+if (ack == 0) {
+
+printf("No ACK received, moving window forward\n");
+
+window_start += window_size;
+
+} 
+
+else {
+
+  printf("No Acknowledgement for frame %d...\n", ack);
+  
+ printf("Resending frames starting from frame %d\n", ack);
+        
+window_start = ack;
+
+}
+
+}
+
+printf("\nAll frames sent successfully.\n");
+
+}
+
 🖥️ Sample Output
-<img width="1210" height="984" alt="code block 1" src="https://github.com/user-attachments/assets/e8e4b6d8-7bb3-454e-8e02-6349c08a432a" />
+
+<img width="1366" height="768" alt="Screenshot (165)" src="https://github.com/user-attachments/assets/40d36632-6b43-469d-827a-f8df19b70b60" />
+
+
+
+
 
 ✅ Result
 
